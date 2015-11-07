@@ -6,7 +6,6 @@
 	<script>
 		!localStorage && (l = location, p = l.pathname.replace(/(^..)(:)/, "$1$$"), (l.href = l.protocol + "//127.0.0.1" + p));
 	</script>
-
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,19 +17,23 @@
 		.display-inline {
 			display: inline;
 		}
+		
+		.center-align {
+			text-align: center;
+		}
 	</style>
 </head>
 
 <body>
-	<div class="container">
-		<div class="head col-md-12">
+	<div class="container header">
+		<div class="col-md-12">
 			<h1 class="text-center">
-				基因重组
+				基因自由组合
 			</h1>
 		</div>
 	</div>
-	<div class="container">
-		<div class="col-md-12" style="text-align: center;">
+	<div class="container body">
+		<div class="col-md-12 center-align">
 			<input class="display-inline" placeholder="基因1" id="gene1" />
 			<span class="display-inline">×</span>
 			<input class="display-inline" placeholder="基因2" id="gene2" />
@@ -45,11 +48,17 @@
 				<p class="lead">组合类型</p>
 				<hr/>
 				<table id="result_table" class="table table-bordered">
-
+					输入基因以开始。
 				</table>
 			</div>
-			<div id="distinguished">
+			<hr/>
+			<div>
+				<p class="lead">快速访问某一个基因</p>
+				<div id="distinguished">
+					<p> 输入基因以开始。 </p>
+				</div>
 			</div>
+			<hr/>
 		</div>
 		<div class="col-md-4">
 			<p class="lead">概率</p>
@@ -61,6 +70,19 @@
 			<p id="info">
 			</p>
 		</div>
+
+	</div>
+	<div class="col-md-12 footer center-align">
+		<p>
+			This project is licensed under<a href="#">MIT</a>.
+		</p>
+		<p>
+			Click
+			<a href="https://github.com/viccrubs/Gene/">here</a> to access Github Repository.
+		</p>
+		<p>
+			Developed by VicCrubs.
+		</p>
 	</div>
 </body>
 
