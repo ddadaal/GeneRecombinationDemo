@@ -5,17 +5,19 @@ function display(gene1, gene2) {
 	saveGenes(gemates1, gemates2);
 	gemates1 = gemates1.distinct();
 	gemates2 = gemates2.distinct();
+	
+	var tableDOM = document.getElementById("result_table");
 
 	var firstRow = "<tr><td>";
 	for (var gemate1Index = 0; gemate1Index < gemates1.length; gemate1Index++) {
 		firstRow += "<td id=" + gemate1Index + ">" + gemates1[gemate1Index] + "</td>";
 	};
 	firstRow += "</tr>";
-	fillBlocks(firstRow);
+	tableDOM.innerHTML = firstRow;
 
 	var finishText = "";
 	var formatForTable = function (content) {
-		return "<td><a name=\'{0}\' href=\"javascript:displayPossibility(\'{0}\');\">{0}</a></td>".format(content);
+		return "<td><a name=\'{0}\' href=\"javascript:handleSearch(\'{0}\');\">{0}</a></td>".format(content);
 	};
 	for (var index = 0; index < gemates2.length; index++) {
 		finishText += "<tr><td>" + gemates2[index] + "</td>";
@@ -25,12 +27,12 @@ function display(gene1, gene2) {
 		};
 		finishText += "</tr>";
 	};
-	fillBlocks(finishText);
+	tableDOM.innerHTML += finishText;
 
 	var dis = document.getElementById("distinguished");
 	var unique = getDistinguishedGenes();
-	unique.forEach(function(element) {
-		var amark = "<a href=\"javascript:displayPossibility(\'{0}\');\">{0}</a> ".format(element);
+	unique.forEach(function (element) {
+		var amark = "<a href=\"javascript:handleSearch(\'{0}\');\">{0}</a> ".format(element);
 		dis.innerHTML += amark;
 	}, this);
 }
@@ -50,7 +52,6 @@ function saveGenes(gemates1, gemates2) {
 	};
 
 	var storage = window.localStorage;
-	storage["gene"] = "";
 	storage["gene"] = genes;
 }
 
@@ -59,9 +60,7 @@ function getPossibility(gene) {
 	var genes = storage["gene"].split(',');
 	var total = genes.length;
 	var matched = 0;
-	genes.forEach(function(element) {
-		if (gene == element) matched++;
-	}, this);
+	genes.forEach(function(element){if (gene ==element) matched++;},this);
 	return [matched, total];
 }
 
@@ -76,11 +75,6 @@ function recombine(gemate1, gemate2) {
 		}
 	};
 	return gene;
-}
-
-function fillBlocks(html) {
-	var resultTable = document.getElementById("result_table");
-	resultTable.innerHTML += html;
 }
 
 function getGemates(gene) {
@@ -115,12 +109,10 @@ String.prototype.isUpper = function () {
 
 Array.prototype.distinct = function () {
 	var n = {}, r = [];
-	for (var i = 0; i < this.length; i++) 
-	{
-		if (!n[this[i]]) 
-		{
-			n[this[i]] = true; 
-			r.push(this[i]); 
+	for (var i = 0; i < this.length; i++) {
+		if (!n[this[i]]) {
+			n[this[i]] = true;
+			r.push(this[i]);
 		}
 	}
 	return r;

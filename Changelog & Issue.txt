@@ -1,0 +1,10 @@
+Gene Recombination Demo
+==========================================
+Changelog:
+
+2015-11-12:
+1. Support for multiple selections and search.
+
+
+Issues:
+1. Significant performance drop has been detected when gemates are more than 7.
