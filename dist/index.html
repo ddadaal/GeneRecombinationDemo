@@ -7,10 +7,11 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Template</title>
+		<title>Gene Recombination Demo</title>
 		<link href="bootstrap.min.css" rel="stylesheet">
-		<script src="main.js" /></script>
-		<script src="webpage.js" /></script>
+		<script src="js/extensions.js"></script>
+		<script src="js/main.js" /></script>
+		<script src="js/webpage.js" /></script>
 		<style>
 			.display-inline {
 				display: inline;
@@ -60,7 +61,7 @@
 			<hr/>
 			<div>
 				<input type="text" id="search" placeholder="要查找的基因" />
-				<a class="btn btn-default" href="javascript:search();">GO!</a>
+				<a class="btn btn-default" href="javascript:handleSearch(document.getElementById('search').value);">GO!</a>
 			</div>
 			<table id="info" class="table table-bordered table-condensed">
 				<tr>
@@ -74,7 +75,7 @@
 			<p>This project is licensed under
 				<a href="https://raw.githubusercontent.com/viccrubs/GeneRecombinationDemo/master/LICENSE.txt">MIT</a>.</p>
 			<p>Click
-				<a href="https://github.com/viccrubs/GeneRecombinationDemo">here</a>to access Github Repository.</p>
+				<a href="https://github.com/viccrubs/GeneRecombinationDemo">here</a> to access Github Repository.</p>
 			<p>Developed by VicCrubs.</p>
 		</div>
 	</body>

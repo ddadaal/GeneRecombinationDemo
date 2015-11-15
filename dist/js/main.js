@@ -8,6 +8,7 @@ function display(gene1, gene2) {
 	
 	var tableDOM = document.getElementById("result_table");
 
+	//table print
 	var firstRow = "<tr><td>";
 	for (var gemate1Index = 0; gemate1Index < gemates1.length; gemate1Index++) {
 		firstRow += "<td id=" + gemate1Index + ">" + gemates1[gemate1Index] + "</td>";
@@ -101,37 +102,4 @@ function searchGemates(index, alleles, addmethod, lastresult) {
 			lastresult = lastresult.substring(0, lastresult.length - 1);
 		};
 	}
-}
-
-String.prototype.isUpper = function () {
-	return this.toUpperCase() == this;
-}
-
-Array.prototype.distinct = function () {
-	var n = {}, r = [];
-	for (var i = 0; i < this.length; i++) {
-		if (!n[this[i]]) {
-			n[this[i]] = true;
-			r.push(this[i]);
-		}
-	}
-	return r;
-}
-
-String.prototype.format = function () {
-	var args = arguments;
-	return this.replace(/\{(\d+)\}/g, function (s, i) {
-		return args[i];
-	});
-}
-
-Array.prototype.reduce_a_fraction = function () {
-	var m = this[0];
-	var n = this[1];
-	var a = (m < n) ? m : n;
-	while (true) {
-		if (m % a == 0 && n % a == 0) break;
-		a--;
-	}
-	return [m / a, n / a];
 }

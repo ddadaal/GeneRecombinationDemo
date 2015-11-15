@@ -1,11 +1,11 @@
 function apply() {
-	tableClear();
+	initialize();
 	display(document.getElementById("gene1").value, document.getElementById("gene2").value);
 };
 
 function handleSearch(input){
 	if (!document.getElementById("multichoose").checked)
-		tableInitialize();
+		searchClear();
 	if (input.indexOf(",")>-1)
 		input.split(",").forEach(function(element){displayPossibility(element.trim())},this);
 	else{
@@ -29,10 +29,6 @@ function executeExample() {
 	document.getElementById("gene2").value = "AaBbCC";
 	apply();
 }
-function search() {
-	var gene = document.getElementById("search");
-	handleSearch(gene.value);
-}
 
 function highlight(gene) {
 	var matched = document.getElementsByName(gene);
@@ -42,7 +38,7 @@ function highlight(gene) {
 	}
 }
 
-function tableInitialize(){
+function searchClear(){
 	var possibilityChart = document.getElementById("info");
 	possibilityChart.innerHTML = "<tr><td>基因</td><td>概率</td></tr>";
 	
@@ -54,7 +50,7 @@ function tableInitialize(){
 	}
 }
 
-function tableClear(){
+function initialize(){
 	var storage = window.localStorage;
 	storage["gene"] = "";
 
