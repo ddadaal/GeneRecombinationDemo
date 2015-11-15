@@ -11,7 +11,7 @@ function display(gene1, gene2) {
 	//table print
 	var firstRow = "<tr><td>";
 	for (var gemate1Index = 0; gemate1Index < gemates1.length; gemate1Index++) {
-		firstRow += "<td id=" + gemate1Index + ">" + gemates1[gemate1Index] + "</td>";
+		firstRow += "<td id={0}>{1}</td>".format(gemate1Index,gemates1[gemate1Index]);
 	};
 	firstRow += "</tr>";
 	tableDOM.innerHTML = firstRow;
