@@ -11,7 +11,7 @@ function display(gene1, gene2) {
 	//table print
 	var firstRow = "<tr><td>";
 	for (var gemate1Index = 0; gemate1Index < gemates1.length; gemate1Index++) {
-		firstRow += "<td id=" + gemate1Index + ">" + gemates1[gemate1Index] + "</td>";
+		firstRow += "<td id={0}>{1}</td>".format(gemate1Index,gemates1[gemate1Index]);
 	};
 	firstRow += "</tr>";
 	tableDOM.innerHTML = firstRow;
@@ -20,10 +20,10 @@ function display(gene1, gene2) {
 	var formatForTable = function (content) {
 		return "<td><a name=\'{0}\' href=\"javascript:handleSearch(\'{0}\');\">{0}</a></td>".format(content);
 	};
-	for (var index = 0; index < gemates2.length; index++) {
-		finishText += "<tr><td>" + gemates2[index] + "</td>";
+	for (var i = 0; i < gemates2.length; i++) {
+		finishText += "<tr><td>" + gemates2[i] + "</td>";
 		for (var count = 0; count < gemates1.length; count++) {
-			var gene = recombine(gemates1[count], gemates2[index]);
+			var gene = recombine(gemates1[count], gemates2[i]);
 			finishText += formatForTable(gene);
 		};
 		finishText += "</tr>";
@@ -67,12 +67,12 @@ function getPossibility(gene) {
 
 function recombine(gemate1, gemate2) {
 	var gene = "";
-	for (var index = 0; index < gemate1.length; index++) {
-		if (gemate2[index].isUpper() && (!gemate1[index].isUpper())) {
-			gene += gemate2[index] + gemate1[index];
+	for (var i = 0; i < gemate1.length; i++) {
+		if (gemate2[i].isUpper() && (!gemate1[i].isUpper())) {
+			gene += gemate2[i] + gemate1[i];
 		}
 		else {
-			gene += gemate1[index] + gemate2[index];
+			gene += gemate1[i] + gemate2[i];
 		}
 	};
 	return gene;
@@ -85,8 +85,7 @@ function getGemates(gene) {
 		alleles.push(gene.substring(i, i + 2));
 	};
 	var gemates = [];
-	searchGemates(0, alleles, function (result) { gemates.push(result); }, "");
-
+    searchGemates(0,alleles, function(result){gemates.push(result);} ,"");
 	return gemates;
 }
 
